@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "106771026847",
+    "firebase_url": "https://cricspot-c719c.firebaseio.com",
+    "project_id": "cricspot-c719c",
+    "storage_bucket": "cricspot-c719c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:106771026847:android:a4104c99c2d86527",
+        "android_client_info": {
+          "package_name": "android.g6.cricspot"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "106771026847-l0sv71eeq2t2d82oactjqqhdbovcpt0g.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "android.g6.cricspot",
+            "certificate_hash": "90cb8e66bb34703ffd1d56255c11219d29608e4c"
+          }
+        },
+        {
+          "client_id": "106771026847-0hmhtpj68sbo7t972t7sgvg1dg5qkr96.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAfX5VHQwpm2cnSLuOegKVNmMBSYQIZltA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "106771026847-0hmhtpj68sbo7t972t7sgvg1dg5qkr96.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

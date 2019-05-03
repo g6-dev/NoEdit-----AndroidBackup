@@ -1,0 +1,554 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MatchActivity">
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/statusTxtInMatchPage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorPrimary"
+            android:layout_marginTop="10dp"
+            android:text="Request is managing..."
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/yourTeamNameTxtInMatchPage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="Your Team"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/statusTxtInMatchPage" />
+
+        <TextView
+            android:id="@+id/yourPlayer1txtInMatchPage"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="80dp"
+            android:layout_marginLeft="80dp"
+            android:layout_marginTop="30dp"
+            android:text="Player 1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/yourTeamNameTxtInMatchPage" />
+
+        <EditText
+            android:id="@+id/yourPlayer1RunsInMatchPage"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="7dp"
+            android:layout_marginLeft="7dp"
+            android:ems="10"
+            android:hint="@string/runs"
+            android:inputType="textPersonName"
+            app:layout_constraintBaseline_toBaselineOf="@+id/yourPlayer1txtInMatchPage"
+            app:layout_constraintStart_toEndOf="@+id/yourPlayer1txtInMatchPage" />
+
+        <EditText
+            android:id="@+id/yourPlayer1OversInMatchPage"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:ems="10"
+            android:hint="@string/overs"
+            android:inputType="textPersonName"
+            app:layout_constraintBaseline_toBaselineOf="@+id/yourPlayer1txtInMatchPage"
+            app:layout_constraintStart_toEndOf="@+id/yourPlayer1RunsInMatchPage" />
+
+        <EditText
+            android:id="@+id/yourPlayer1WktsInMatchPage"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:ems="10"
+            android:hint="@string/wckts"
+            android:inputType="textPersonName"
+            app:layout_constraintBaseline_toBaselineOf="@+id/yourPlayer1txtInMatchPage"
+            app:layout_constraintStart_toEndOf="@+id/yourPlayer1OversInMatchPage" />
+
+
+        <TextView
+            android:id="@+id/yourPlayer2txtInMatchPage"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="80dp"
+            android:layout_marginLeft="80dp"
+            android:layout_marginTop="40dp"
+            android:text="Player 2"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/yourPlayer1txtInMatchPage" />
+
+        <EditText
+            android:id="@+id/yourPlayer2RunsInMatchPage"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="7dp"
+            android:layout_marginLeft="7dp"
+            android:ems="10"
+            android:hint="@string/runs"
+            android:inputType="textPersonName"
+            app:layout_constraintBaseline_toBaselineOf="@+id/yourPlayer2txtInMatchPage"
+            app:layout_constraintStart_toEndOf="@+id/yourPlayer2txtInMatchPage" />
+
+        <EditText
+            android:id="@+id/yourPlayer2OversInMatchPage"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:ems="10"
+            android:hint="@string/overs"
+            android:inputType="textPersonName"
+            app:layout_constraintBaseline_toBaselineOf="@+id/yourPlayer2txtInMatchPage"
+            app:layout_constraintStart_toEndOf="@+id/yourPlayer2RunsInMatchPage" />
+
+        <EditText
+            android:id="@+id/yourPlayer2WktsInMatchPage"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:ems="10"
+            android:hint="@string/wckts"
+            android:inputType="textPersonName"
+            app:layout_constraintBaseline_toBaselineOf="@+id/yourPlayer2txtInMatchPage"
+            app:layout_constraintStart_toEndOf="@+id/yourPlayer2OversInMatchPage" />
+
+
+        <TextView
+            android:id="@+id/yourPlayer3txtInMatchPage"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="80dp"
+            android:layout_marginLeft="80dp"
+            android:layout_marginTop="30dp"
+            android:text="Player 3"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/yourPlayer2WktsInMatchPage" />
+
+        <EditText
+            android:id="@+id/yourPlayer3RunsInMatchPage"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="7dp"
+            android:layout_marginLeft="7dp"
+            android:ems="10"
+            android:hint="@string/runs"
+            android:inputType="textPersonName"
+            app:layout_constraintBaseline_toBaselineOf="@+id/yourPlayer3txtInMatchPage"
+            app:layout_constraintStart_toEndOf="@+id/yourPlayer3txtInMatchPage" />
+
+        <EditText
+            android:id="@+id/yourPlayer3OversInMatchPage"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:ems="10"
+            android:hint="@string/overs"
+            android:inputType="textPersonName"
+            app:layout_constraintBaseline_toBaselineOf="@+id/yourPlayer3txtInMatchPage"
+            app:layout_constraintStart_toEndOf="@+id/yourPlayer3RunsInMatchPage" />
+
+        <EditText
+            android:id="@+id/yourPlayer3WktsInMatchPage"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:ems="10"
+            android:hint="@string/wckts"
+            android:inputType="textPersonName"
+            app:layout_constraintBaseline_toBaselineOf="@+id/yourPlayer3txtInMatchPage"
+            app:layout_constraintStart_toEndOf="@+id/yourPlayer3OversInMatchPage" />
+
+
+        <TextView
+            android:id="@+id/yourPlayer4txtInMatchPage"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="80dp"
+            android:layout_marginLeft="80dp"
+            android:layout_marginTop="30dp"
+            android:text="Player 4"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/yourPlayer3WktsInMatchPage" />
+
+        <EditText
+            android:id="@+id/yourPlayer4RunsInMatchPage"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="7dp"
+            android:layout_marginLeft="7dp"
+            android:ems="10"
+            android:hint="@string/runs"
+            android:inputType="textPersonName"
+            app:layout_constraintBaseline_toBaselineOf="@+id/yourPlayer4txtInMatchPage"
+            app:layout_constraintStart_toEndOf="@+id/yourPlayer4txtInMatchPage" />
+
+        <EditText
+            android:id="@+id/yourPlayer4OversInMatchPage"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:ems="10"
+            android:hint="@string/overs"
+            android:inputType="textPersonName"
+            app:layout_constraintBaseline_toBaselineOf="@+id/yourPlayer4txtInMatchPage"
+            app:layout_constraintStart_toEndOf="@+id/yourPlayer4RunsInMatchPage" />
+
+        <EditText
+            android:id="@+id/yourPlayer4WktsInMatchPage"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:ems="10"
+            android:hint="@string/wckts"
+            android:inputType="textPersonName"
+            app:layout_constraintBaseline_toBaselineOf="@+id/yourPlayer4txtInMatchPage"
+            app:layout_constraintStart_toEndOf="@+id/yourPlayer4OversInMatchPage" />
+
+
+        <TextView
+            android:id="@+id/yourPlayer5txtInMatchPage"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="80dp"
+            android:layout_marginLeft="80dp"
+            android:layout_marginTop="30dp"
+            android:text="Player 5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/yourPlayer4WktsInMatchPage" />
+
+        <EditText
+            android:id="@+id/yourPlayer5RunsInMatchPage"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="7dp"
+            android:layout_marginLeft="7dp"
+            android:ems="10"
+            android:hint="@string/runs"
+            android:inputType="textPersonName"
+            app:layout_constraintBaseline_toBaselineOf="@+id/yourPlayer5txtInMatchPage"
+            app:layout_constraintStart_toEndOf="@+id/yourPlayer5txtInMatchPage" />
+
+        <EditText
+            android:id="@+id/yourPlayer5OversInMatchPage"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:ems="10"
+            android:hint="@string/overs"
+            android:inputType="textPersonName"
+            app:layout_constraintBaseline_toBaselineOf="@+id/yourPlayer5txtInMatchPage"
+            app:layout_constraintStart_toEndOf="@+id/yourPlayer5RunsInMatchPage" />
+
+        <EditText
+            android:id="@+id/yourPlayer5WktsInMatchPage"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:ems="10"
+            android:hint="@string/wckts"
+            android:inputType="textPersonName"
+            app:layout_constraintBaseline_toBaselineOf="@+id/yourPlayer5txtInMatchPage"
+            app:layout_constraintStart_toEndOf="@+id/yourPlayer5OversInMatchPage" />
+
+
+        <TextView
+            android:id="@+id/challengerTeamNameTxtInMatchPage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="Challenger Team"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/yourPlayer5OversInMatchPage" />
+
+        <TextView
+            android:id="@+id/challengerPlayer1txtInMatchPage"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="80dp"
+            android:layout_marginLeft="80dp"
+            android:layout_marginTop="30dp"
+            android:text="Player 1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/challengerTeamNameTxtInMatchPage" />
+
+        <EditText
+            android:id="@+id/challengerPlayer1RunsInMatchPage"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="7dp"
+            android:layout_marginLeft="7dp"
+            android:ems="10"
+            android:hint="@string/runs"
+            android:inputType="textPersonName"
+            app:layout_constraintBaseline_toBaselineOf="@+id/challengerPlayer1txtInMatchPage"
+            app:layout_constraintStart_toEndOf="@+id/challengerPlayer1txtInMatchPage" />
+
+        <EditText
+            android:id="@+id/challengerPlayer1OversInMatchPage"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:ems="10"
+            android:hint="@string/overs"
+            android:inputType="textPersonName"
+            app:layout_constraintBaseline_toBaselineOf="@+id/challengerPlayer1txtInMatchPage"
+            app:layout_constraintStart_toEndOf="@+id/challengerPlayer1RunsInMatchPage" />
+
+        <EditText
+            android:id="@+id/challengerPlayer1WktsInMatchPage"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:ems="10"
+            android:hint="@string/wckts"
+            android:inputType="textPersonName"
+            app:layout_constraintBaseline_toBaselineOf="@+id/challengerPlayer1txtInMatchPage"
+            app:layout_constraintStart_toEndOf="@+id/challengerPlayer1OversInMatchPage" />
+
+
+        <TextView
+            android:id="@+id/challengerPlayer2txtInMatchPage"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="80dp"
+            android:layout_marginLeft="80dp"
+            android:layout_marginTop="30dp"
+            android:text="Player 2"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/challengerPlayer1WktsInMatchPage" />
+
+        <EditText
+            android:id="@+id/challengerPlayer2RunsInMatchPage"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="7dp"
+            android:layout_marginLeft="7dp"
+            android:ems="10"
+            android:hint="@string/runs"
+            android:inputType="textPersonName"
+            app:layout_constraintBaseline_toBaselineOf="@+id/challengerPlayer2txtInMatchPage"
+            app:layout_constraintStart_toEndOf="@+id/challengerPlayer2txtInMatchPage" />
+
+        <EditText
+            android:id="@+id/challengerPlayer2OversInMatchPage"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:ems="10"
+            android:hint="@string/overs"
+            android:inputType="textPersonName"
+            app:layout_constraintBaseline_toBaselineOf="@+id/challengerPlayer2txtInMatchPage"
+            app:layout_constraintStart_toEndOf="@+id/challengerPlayer2RunsInMatchPage" />
+
+        <EditText
+            android:id="@+id/challengerPlayer2WktsInMatchPage"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:ems="10"
+            android:hint="@string/wckts"
+            android:inputType="textPersonName"
+            app:layout_constraintBaseline_toBaselineOf="@+id/challengerPlayer2txtInMatchPage"
+            app:layout_constraintStart_toEndOf="@+id/challengerPlayer2OversInMatchPage" />
+
+
+        <TextView
+            android:id="@+id/challengerPlayer3txtInMatchPage"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="80dp"
+            android:layout_marginLeft="80dp"
+            android:layout_marginTop="30dp"
+            android:text="Player 3"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/challengerPlayer2WktsInMatchPage" />
+
+        <EditText
+            android:id="@+id/challengerPlayer3RunsInMatchPage"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="7dp"
+            android:layout_marginLeft="7dp"
+            android:ems="10"
+            android:hint="@string/runs"
+            android:inputType="textPersonName"
+            app:layout_constraintBaseline_toBaselineOf="@+id/challengerPlayer3txtInMatchPage"
+            app:layout_constraintStart_toEndOf="@+id/challengerPlayer3txtInMatchPage" />
+
+        <EditText
+            android:id="@+id/challengerPlayer3OversInMatchPage"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:ems="10"
+            android:hint="@string/overs"
+            android:inputType="textPersonName"
+            app:layout_constraintBaseline_toBaselineOf="@+id/challengerPlayer3txtInMatchPage"
+            app:layout_constraintStart_toEndOf="@+id/challengerPlayer3RunsInMatchPage" />
+
+        <EditText
+            android:id="@+id/challengerPlayer3WktsInMatchPage"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:ems="10"
+            android:hint="@string/wckts"
+            android:inputType="textPersonName"
+            app:layout_constraintBaseline_toBaselineOf="@+id/challengerPlayer3txtInMatchPage"
+            app:layout_constraintStart_toEndOf="@+id/challengerPlayer3OversInMatchPage" />
+
+
+        <TextView
+            android:id="@+id/challengerPlayer4txtInMatchPage"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="80dp"
+            android:layout_marginLeft="80dp"
+            android:layout_marginTop="30dp"
+            android:text="Player 4"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/challengerPlayer3WktsInMatchPage" />
+
+        <EditText
+            android:id="@+id/challengerPlayer4RunsInMatchPage"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="7dp"
+            android:layout_marginLeft="7dp"
+            android:ems="10"
+            android:hint="@string/runs"
+            android:inputType="textPersonName"
+            app:layout_constraintBaseline_toBaselineOf="@+id/challengerPlayer4txtInMatchPage"
+            app:layout_constraintStart_toEndOf="@+id/challengerPlayer4txtInMatchPage" />
+
+        <EditText
+            android:id="@+id/challengerPlayer4OversInMatchPage"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:ems="10"
+            android:hint="@string/overs"
+            android:inputType="textPersonName"
+            app:layout_constraintBaseline_toBaselineOf="@+id/challengerPlayer4txtInMatchPage"
+            app:layout_constraintStart_toEndOf="@+id/challengerPlayer4RunsInMatchPage" />
+
+        <EditText
+            android:id="@+id/challengerPlayer4WktsInMatchPage"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:ems="10"
+            android:hint="@string/wckts"
+            android:inputType="textPersonName"
+            app:layout_constraintBaseline_toBaselineOf="@+id/challengerPlayer4txtInMatchPage"
+            app:layout_constraintStart_toEndOf="@+id/challengerPlayer4OversInMatchPage" />
+
+
+        <TextView
+            android:id="@+id/challengerPlayer5txtInMatchPage"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="80dp"
+            android:layout_marginLeft="80dp"
+            android:layout_marginTop="30dp"
+            android:text="Player 5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/challengerPlayer4WktsInMatchPage" />
+
+        <EditText
+            android:id="@+id/challengerPlayer5RunsInMatchPage"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="7dp"
+            android:layout_marginLeft="7dp"
+            android:ems="10"
+            android:hint="@string/runs"
+            android:inputType="textPersonName"
+            app:layout_constraintBaseline_toBaselineOf="@+id/challengerPlayer5txtInMatchPage"
+            app:layout_constraintStart_toEndOf="@+id/challengerPlayer5txtInMatchPage" />
+
+        <EditText
+            android:id="@+id/challengerPlayer5OversInMatchPage"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:ems="10"
+            android:hint="@string/overs"
+            android:inputType="textPersonName"
+            app:layout_constraintBaseline_toBaselineOf="@+id/challengerPlayer5txtInMatchPage"
+            app:layout_constraintStart_toEndOf="@+id/challengerPlayer5RunsInMatchPage" />
+
+        <EditText
+            android:id="@+id/challengerPlayer5WktsInMatchPage"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:ems="10"
+            android:hint="@string/wckts"
+            android:inputType="textPersonName"
+            app:layout_constraintBaseline_toBaselineOf="@+id/challengerPlayer5txtInMatchPage"
+            app:layout_constraintStart_toEndOf="@+id/challengerPlayer5OversInMatchPage" />
+
+        <Button
+            android:id="@+id/startMatchBtnInMatchPage"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:text="Start Match"
+            android:onClick="startOrFinishClickedInMatchPageButton"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/challengerPlayer5WktsInMatchPage" />
+
+        <Button
+            android:id="@+id/cancelMatchBtnInMatchPage"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:text="Cancel Match"
+            android:onClick="cancelClickedInMatchPage"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/startMatchBtnInMatchPage" />
+
+        <Button
+            android:id="@+id/goToHomeBtnInMatchPage"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:text="Go to Home"
+            android:onClick="goToHomeClickedInMatchPage"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cancelMatchBtnInMatchPage" />
+
+    </android.support.constraint.ConstraintLayout>
+</ScrollView>

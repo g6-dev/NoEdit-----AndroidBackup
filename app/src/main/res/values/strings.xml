@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">CricSpot</string>
+    <string name="noInternet">Can not reach the internet!</string>
+    <string name="fieldsEmpty">Some fields are empty!</string>
+    <string name="runs">Runs</string>
+    <string name="overs">Overs</string>
+    <string name="wckts">Wckts</string>
+</resources>
