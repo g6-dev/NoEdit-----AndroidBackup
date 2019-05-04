@@ -3,6 +3,7 @@ package android.g6.cricspot;
 import android.content.Context;
 import android.content.Intent;
 import android.g6.cricspot.CricClasses.DatabaseManager;
+import android.g6.cricspot.CricObjects.MatchDetails;
 import android.g6.cricspot.CricObjects.Team;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
@@ -18,7 +19,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MatchActivity extends AppCompatActivity {
-    
+
     TextView yoTeam, chlTeam, statusTxt,
             yoPlayer1, yoPlayer2, yoPlayer3, yoPlayer4, yoPlayer5,
             chlPlayer1, chlPlayer2, chlPlayer3, chlPlayer4, chlPlayer5;
@@ -40,6 +41,7 @@ public class MatchActivity extends AppCompatActivity {
     List<Team> listOfAllTeams = new ArrayList<>();
     DatabaseManager dbManager = new DatabaseManager();
     Intent intent;
+    MatchDetails matchDetails = new MatchDetails();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,8 +53,8 @@ public class MatchActivity extends AppCompatActivity {
         selectedTeam = MainActivity.getUserTeamObject(); // Your Team
         listOfAllTeams = DatabaseManager.getTeamsList();
 
-        for(Team team: listOfAllTeams){
-            if (team.getName().equalsIgnoreCase(selectedTeam.getChallenger())){
+        for (Team team : listOfAllTeams) {
+            if (team.getName().equalsIgnoreCase(selectedTeam.getChallenger())) {
                 challengerTeam = team; // ChallengerTeam
             }
         }
@@ -73,8 +75,8 @@ public class MatchActivity extends AppCompatActivity {
         chlPlayer5.setText(challengerTeam.getPlayer5());
 
         /*TODO: If you sent request, wait for response*/
-        if (selectedTeam.getPlaying()){ // You sent the request
-            if (challengerTeam.getPlaying()){ // Challenger too accepted the match
+        if (selectedTeam.getPlaying()) { // You sent the request
+            if (challengerTeam.getPlaying()) { // Challenger too accepted the match
                 /*TODO: Challenger is accepted part here*/
                 statusTxt.setText("Challenger accepted your request...");
 
@@ -82,15 +84,15 @@ public class MatchActivity extends AppCompatActivity {
                 cancelMatch.setEnabled(false); // No need 'Cancel Match'
 
                 setEditors(true); // Can edit
-            }else{
+            } else {
                 /*TODO: Challenger not yet accepted part here*/
                 statusTxt.setText("Challenger yet not accepted!");
 
                 setEditors(false); //Can not be edited right now
                 startMatch.setEnabled(false); // Ypu should wait till he accepts
             }
-        }else{
-            if(challengerTeam.getPlaying()){ /*TODO: You havn't accepted yet*/
+        } else {
+            if (challengerTeam.getPlaying()) { /*TODO: You havn't accepted yet*/
                 statusTxt.setText("You have not accepted yet!");
 
                 setEditors(false); // Can not be edited right now
@@ -99,7 +101,7 @@ public class MatchActivity extends AppCompatActivity {
     }
 
     public void startOrFinishClickedInMatchPageButton(View view) {
-        if(isInternetOn()) {
+        if (isInternetOn()) {
             if (startMatch.getText().toString().equalsIgnoreCase("Start Match")) {
                 /*TODO: Accepting the request part here*/
                 // Accepting the request part
@@ -116,12 +118,19 @@ public class MatchActivity extends AppCompatActivity {
             } else if (startMatch.getText().toString().equalsIgnoreCase("Finish Match")) {
                 /*TODO: Finishing the match part here*/
                 // Finishing the Match part
-                updateEndingMatch();
+                if (isEmptyFields()){
+                    Toast.makeText(MatchActivity.this, "Some fields are empty!", Toast.LENGTH_LONG).show();
+                }else {
+                    dbManager.addMatchDetailsToFirebase(DatabaseManager.getDbMemberNameForMatchDetails(),
+                            matchDetails);
 
-                intent = new Intent(MatchActivity.this, UserWithTeamActivity.class);
-                startActivity(intent);
+                    updateEndingMatch();
+
+                    intent = new Intent(MatchActivity.this, UserWithTeamActivity.class);
+                    startActivity(intent);
+                }
             }
-        }else{
+        } else {
             Toast.makeText(MatchActivity.this, "No internet!", Toast.LENGTH_LONG).show();
         }
     }
@@ -133,12 +142,12 @@ public class MatchActivity extends AppCompatActivity {
             // Go back to the home
             intent = new Intent(MatchActivity.this, UserWithTeamActivity.class);
             startActivity(intent);
-        }else{
+        } else {
             Toast.makeText(MatchActivity.this, "No internet!", Toast.LENGTH_LONG).show();
         }
     }
 
-    protected void updateEndingMatch(){
+    protected void updateEndingMatch() {
         /*TODO: Update your team + false*/
 
         //Updating the your team object
@@ -159,7 +168,7 @@ public class MatchActivity extends AppCompatActivity {
                 challengerTeam);
     }
 
-    protected void assignLayouts(){
+    protected void assignLayouts() {
         statusTxt = findViewById(R.id.statusTxtInMatchPage);
 
         yoTeam = findViewById(R.id.yourTeamNameTxtInMatchPage);
@@ -220,7 +229,7 @@ public class MatchActivity extends AppCompatActivity {
         chlPl5WktsE = findViewById(R.id.challengerPlayer5WktsInMatchPage);
     }
 
-    protected void setEditors(Boolean io){
+    protected void setEditors(Boolean io) {
         yoPl1RunsE.setEnabled(io);
         yoPl1OversE.setEnabled(io);
         yoPl1WktsE.setEnabled(io);
@@ -267,10 +276,92 @@ public class MatchActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    protected Boolean isEmptyFields() {
+        matchDetails.setYoTeam(selectedTeam.getName());
+
+        matchDetails.setYoPl1Runs(yoPl1RunsE.getText().toString());
+        matchDetails.setYoPl1Overs(yoPl1OversE.getText().toString());
+        matchDetails.setYoPl1Wkts(yoPl1WktsE.getText().toString());
+
+        matchDetails.setYoPl2Runs(yoPl2RunsE.getText().toString());
+        matchDetails.setYoPl2Overs(yoPl2OversE.getText().toString());
+        matchDetails.setYoPl2Wkts(yoPl2WktsE.getText().toString());
+
+        matchDetails.setYoPl3Runs(yoPl3RunsE.getText().toString());
+        matchDetails.setYoPl3Overs(yoPl3OversE.getText().toString());
+        matchDetails.setYoPl3Wkts(yoPl3WktsE.getText().toString());
+
+        matchDetails.setYoPl4Runs(yoPl4RunsE.getText().toString());
+        matchDetails.setYoPl4Overs(yoPl4OversE.getText().toString());
+        matchDetails.setYoPl4Wkts(yoPl4WktsE.getText().toString());
+
+        matchDetails.setYoPl5Runs(yoPl5RunsE.getText().toString());
+        matchDetails.setYoPl5Overs(yoPl5OversE.getText().toString());
+        matchDetails.setYoPl5Wkts(yoPl5WktsE.getText().toString());
+
+        matchDetails.setChlTeam(challengerTeam.getName());
+
+        matchDetails.setChlPl1Runs(chlPl1RunsE.getText().toString());
+        matchDetails.setChlPl1Overs(chlPl1OversE.getText().toString());
+        matchDetails.setChlPl1Wkts(chlPl1WktsE.getText().toString());
+
+        matchDetails.setChlPl2Runs(chlPl2RunsE.getText().toString());
+        matchDetails.setChlPl2Overs(chlPl2OversE.getText().toString());
+        matchDetails.setChlPl2Wkts(chlPl2WktsE.getText().toString());
+
+        matchDetails.setChlPl3Runs(chlPl3RunsE.getText().toString());
+        matchDetails.setChlPl3Overs(chlPl3OversE.getText().toString());
+        matchDetails.setChlPl3Wkts(chlPl3WktsE.getText().toString());
+
+        matchDetails.setChlPl4Runs(chlPl4RunsE.getText().toString());
+        matchDetails.setChlPl4Overs(chlPl4OversE.getText().toString());
+        matchDetails.setChlPl4Wkts(chlPl4WktsE.getText().toString());
+
+        matchDetails.setChlPl5Runs(chlPl5RunsE.getText().toString());
+        matchDetails.setChlPl5Overs(chlPl5OversE.getText().toString());
+        matchDetails.setChlPl5Wkts(chlPl5WktsE.getText().toString());
+
+        if (matchDetails.getYoPl1Runs().equalsIgnoreCase("") ||
+                matchDetails.getYoPl1Overs().equalsIgnoreCase("") ||
+                matchDetails.getYoPl1Wkts().equalsIgnoreCase("") ||
+                matchDetails.getYoPl2Runs().equalsIgnoreCase("") ||
+                matchDetails.getYoPl2Overs().equalsIgnoreCase("") ||
+                matchDetails.getYoPl2Wkts().equalsIgnoreCase("") ||
+                matchDetails.getYoPl3Runs().equalsIgnoreCase("") ||
+                matchDetails.getYoPl3Overs().equalsIgnoreCase("") ||
+                matchDetails.getYoPl3Wkts().equalsIgnoreCase("") ||
+                matchDetails.getYoPl4Runs().equalsIgnoreCase("") ||
+                matchDetails.getYoPl4Overs().equalsIgnoreCase("") ||
+                matchDetails.getYoPl4Wkts().equalsIgnoreCase("") ||
+                matchDetails.getYoPl5Runs().equalsIgnoreCase("") ||
+                matchDetails.getYoPl5Overs().equalsIgnoreCase("") ||
+                matchDetails.getYoPl5Wkts().equalsIgnoreCase("") ||
+                matchDetails.getChlPl1Runs().equalsIgnoreCase("") ||
+                matchDetails.getChlPl1Overs().equalsIgnoreCase("") ||
+                matchDetails.getChlPl1Wkts().equalsIgnoreCase("") ||
+                matchDetails.getChlPl2Runs().equalsIgnoreCase("") ||
+                matchDetails.getChlPl2Overs().equalsIgnoreCase("") ||
+                matchDetails.getChlPl2Wkts().equalsIgnoreCase("") ||
+                matchDetails.getChlPl3Runs().equalsIgnoreCase("") ||
+                matchDetails.getChlPl3Overs().equalsIgnoreCase("") ||
+                matchDetails.getChlPl3Wkts().equalsIgnoreCase("") ||
+                matchDetails.getChlPl4Runs().equalsIgnoreCase("") ||
+                matchDetails.getChlPl4Overs().equalsIgnoreCase("") ||
+                matchDetails.getChlPl4Wkts().equalsIgnoreCase("") ||
+                matchDetails.getChlPl5Runs().equalsIgnoreCase("") ||
+                matchDetails.getChlPl5Overs().equalsIgnoreCase("") ||
+                matchDetails.getChlPl5Wkts().equalsIgnoreCase("")
+        ) {
+            return true; // Yeah, it seems some fields are empty!!!
+        } else {
+            return false; // Alright here dude!
+        }
+    }
+
     /* To check the internet connection */
-    public Boolean isInternetOn(){
-        ConnectivityManager connectivityManager = (ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
-        if(connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_MOBILE).getState() == NetworkInfo.State.CONNECTED ||
+    public Boolean isInternetOn() {
+        ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        if (connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_MOBILE).getState() == NetworkInfo.State.CONNECTED ||
                 connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI).getState() == NetworkInfo.State.CONNECTED) {
             //we are connected to a network
             return true;

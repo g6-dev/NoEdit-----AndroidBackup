@@ -1,5 +1,6 @@
 package android.g6.cricspot.CricClasses;
 
+import android.g6.cricspot.CricObjects.MatchDetails;
 import android.g6.cricspot.CricObjects.Player;
 import android.g6.cricspot.CricObjects.Team;
 import android.support.annotation.NonNull;
@@ -21,7 +22,11 @@ public class DatabaseManager {
     //--------------------------- DATABASE MEMBER KEY ----------------------------------------------
     private static final String dbMemberNameForTeam = "Team";
     private static final String dbMemberNameForPlayer = "Player";
-    private static final String dbMemberNameForRequestTeam = "RequestTeam";
+    private static final String dbMemberNameForMatchDetails = "Match Details";
+
+    public static String getDbMemberNameForMatchDetails() {
+        return dbMemberNameForMatchDetails;
+    }
 
     public static String getDbMemberNameForTeam() {
         return dbMemberNameForTeam;
@@ -29,10 +34,6 @@ public class DatabaseManager {
 
     public static String getDbMemberNameForPlayer() {
         return dbMemberNameForPlayer;
-    }
-
-    public static String getDbMemberNameForRequestTeam() {
-        return dbMemberNameForRequestTeam;
     }
     //--------------------------- DATABASE MEMBER KEY ----------------------------------------------
 
@@ -277,6 +278,14 @@ public class DatabaseManager {
                 System.out.println(">>>>> Update is unsuccessful!");
             }
         });
+    }
+
+    public void addMatchDetailsToFirebase(String dbMemberName, MatchDetails md) {
+
+        DatabaseReference dbReference = FirebaseDatabase.getInstance().getReference().child(dbMemberName);
+        System.out.println(">>>> Adding data into fire base");
+        /*dbReference.push().setValue(player);  // Add player with unknown key number*/
+        dbReference.child(md.getYoTeam()+" vs "+md.getChlTeam()).setValue(md);
     }
 
 }
